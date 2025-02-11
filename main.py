@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import time
 from steam_web_api import Steam
 
-steamKey = "30A82DDACF2D0FB7834ABD5133D34ED3"
+steamKey = "###"
 steam = Steam(steamKey)
 
 def getInventory(profile):
