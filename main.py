@@ -17,17 +17,18 @@ def getInventory(steamID):
 
 def getSteamID(link):
     try:
-        if len(link.split("/")) == 6: #detemining if custom link or not
+        if "/id" in link: #detemining if custom link or not
             userID = link.split("/")[-2]
             user = steam.users.search_user(userID)
             steamID = user['player']['steamid']
             return steamID
-        else: #not custom link
-            steamID = link.split("/")
-            return (str(steamID[-1]))[:-1]
+        else: #not custom link#
+            link = link.split("/")#
+            steamID = str(link[-1])
+            return (steamID)
     except:
         print("Invalid Steam Link")
-        return None
+        return None 
 
 def getCases(items):
     #descriptions does not contain each individual case so we use assets instead
@@ -54,11 +55,12 @@ def getCases(items):
 
 
 def main():
-    link = "https://steamcommunity.com/id/_fuz_/"
+    link = "https://steamcommunity.com/profiles/76561198799576372"
     steamID = getSteamID(link)
     if steamID:
         inventory = getInventory(steamID)
-        (getCases(inventory))
+        if inventory:
+            (getCases(inventory))
 
 #https://steamcommunity.com/profiles/76561198799576372 
 #https://steamcommunity.com/id/_fuz_/
