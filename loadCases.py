@@ -1,8 +1,12 @@
 import requests, json
 from addToJSON import addToJSON
+from steam_web_api import Steam
 
-def fetch_inventory_data(steam_id):
-    inventory_url = f"https://steamcommunity.com/inventory/{steam_id}/730/2?l=english&count=5000"
+steamKey = "30A82DDACF2D0FB7834ABD5133D34ED3"
+steam = Steam(steamKey)
+
+def fetch_inventory_data(steamID):
+    inventory_url = f"https://steamcommunity.com/inventory/{steamID}/730/2?l=english&count=5000"
     response = requests.get(inventory_url)
     if response.status_code == 200:
         return response.json()
@@ -25,8 +29,8 @@ def parse_inventory(data):
     addToJSON("hashNames.json", data)
 
 def main():
-    steam_id = "76561199125498206"  
-    data = fetch_inventory_data(steam_id)
+    steamID = "76561197960275286"
+    data = fetch_inventory_data(steamID)
     if data:
         parse_inventory(data)
     else:

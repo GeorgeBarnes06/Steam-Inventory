@@ -50,7 +50,7 @@ def getCases(items):
             else:
                 caseInventory[marketHashName] = 1
             totalCases += 1
-    return (totalCases, caseInventory)
+    print(caseInventory)
 
 
 def main():
@@ -58,9 +58,7 @@ def main():
     steamID = getSteamID(link)
     if steamID:
         inventory = getInventory(steamID)
-        totalCases, cases = getCases(inventory)
-        print(totalCases)
-        print(cases)
+        (getCases(inventory))
 
 #https://steamcommunity.com/profiles/76561198799576372 
 #https://steamcommunity.com/id/_fuz_/
